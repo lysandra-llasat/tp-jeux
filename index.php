@@ -5,7 +5,8 @@
 <?php require_once './requete/transform_number.php' ?>
 
 
-<img class="logo" src="/images/logo.png" alt="logo">
+
+
 <?php require_once './template/_navbar.php' ?>
 <div class="d-flex flex-wrap justify-content-center"><?php get_all_games() ?></div>
 

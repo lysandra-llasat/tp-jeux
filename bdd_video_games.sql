@@ -263,6 +263,14 @@ VALUES (
         3
     );
 
+CREATE TABLE
+    IF NOT EXISTS `user`(
+        `id` INT PRIMARY KEY AUTO_INCREMENT,
+        `email` VARCHAR(100) NOT NULL,
+        `password` VARCHAR(100) NOT NULL,
+        `username` VARCHAR(100) NOT NULL
+    );
+
 /*!40000 ALTER TABLE `jeu` ENABLE KEYS */
 
 ;
@@ -339,100 +347,174 @@ VALUES (1, 3, 'pegi3.png'), (2, 7, 'pegi7.png'), (3, 12, 'pegi12.png'), (4, 16, 
 
 ;
 
-SELECT
-    j.id,
-    j.titre,
-    j.prix,
-    j.image_path,
-    j.age_id,
-    n.note_media,
-    n.note_utilisateur,
-    ra.label ra.image_path AS image_age
-FROM jeu as j
-    INNER JOIN restriction_age AS ra ON j.age_id = ra.id
-    INNER JOIN note AS n ON j.note_id = n.id
-WHERE j.id;
+-- SELECT
 
-SELECT
-    c.id,
-    c.label,
-    COUNT(j.id)
-FROM game_console AS gc
-    INNER JOIN console AS c ON gc.console_id = c.id
-    INNER JOIN jeu AS j ON gc.jeu_id = j.id
-where c.id = 1
-GROUP BY c.id;
+--     j.id,
 
-SELECT
-    j.titre,
-    j.description,
-    j.prix,
-    j.date_sortie,
-    j.image_path,
-    j.id,
-    gc.console_id
-FROM game_console AS gc
-    INNER JOIN jeu AS j ON j.id = gc.jeu_id
-    INNER JOIN console AS c ON c.id = gc.console_id
-WHERE c.id = 1;
+--     j.titre,
 
-SELECT
-    j.id,
-    j.titre,
-    j.prix,
-    j.image_path AS image_jeux,
-    j.age_id,
-    n.note_utilisateur
-FROM jeu as j
-    INNER JOIN note AS n ON j.note_id = n.id
-ORDER BY
-    n.note_utilisateur DESC;
+--     j.prix,
 
+--     j.image_path,
 
-SELECT
-    c.id,
-    c.label,
-    COUNT(j.id)
-FROM game_console AS gc
-    INNER JOIN console AS c ON gc.console_id = c.id
-    INNER JOIN jeu AS j ON gc.jeu_id = j.id
-where c.id = gc.console_id
-GROUP BY c.id;
+--     j.age_id,
 
-SELECT
-ra.id,
-ra.label,
-ra.image_path,
-COUNT(j.id)
-FROM restriction_age AS ra
-INNER JOIN jeu AS j
-ON ra.id = j.age_id
-GROUP BY ra.id;
+--     n.note_media,
 
+--     n.note_utilisateur,
 
-SELECT j.titre, 
-     j.description, 
-     j.prix, 
-     j.date_sortie, 
-     j.image_path AS image_jeux, 
-     j.id, 
-     gc.console_id
-     FROM game_console AS gc
-     INNER JOIN jeu AS j
-     ON j.id = gc.jeu_id 
-     INNER JOIN console AS c
-     ON c.id = gc.console_id
-     WHERE c.id = 1;
+--     ra.label ra.image_path AS image_age
 
-SELECT j.titre, 
-     j.description, 
-     j.prix, 
-     j.date_sortie, 
-     j.image_path AS image_jeux, 
-     j.id, 
-    ra.id, 
-    ra.label
-     FROM jeu AS j 
-     INNER JOIN restriction_age AS ra 
-     ON j.age_id = ra.id
-     WHERE ra.id = 1;
+-- FROM jeu as j
+
+--     INNER JOIN restriction_age AS ra ON j.age_id = ra.id
+
+--     INNER JOIN note AS n ON j.note_id = n.id
+
+-- WHERE j.id;
+
+-- SELECT
+
+--     c.id,
+
+--     c.label,
+
+--     COUNT(j.id)
+
+-- FROM game_console AS gc
+
+--     INNER JOIN console AS c ON gc.console_id = c.id
+
+--     INNER JOIN jeu AS j ON gc.jeu_id = j.id
+
+-- where c.id = 1
+
+-- GROUP BY c.id;
+
+-- SELECT
+
+--     j.titre,
+
+--     j.description,
+
+--     j.prix,
+
+--     j.date_sortie,
+
+--     j.image_path,
+
+--     j.id,
+
+--     gc.console_id
+
+-- FROM game_console AS gc
+
+--     INNER JOIN jeu AS j ON j.id = gc.jeu_id
+
+--     INNER JOIN console AS c ON c.id = gc.console_id
+
+-- WHERE c.id = 1;
+
+-- SELECT
+
+--     j.id,
+
+--     j.titre,
+
+--     j.prix,
+
+--     j.image_path AS image_jeux,
+
+--     j.age_id,
+
+--     n.note_utilisateur
+
+-- FROM jeu as j
+
+--     INNER JOIN note AS n ON j.note_id = n.id
+
+-- ORDER BY
+
+--     n.note_utilisateur DESC;
+
+-- SELECT
+
+--     c.id,
+
+--     c.label,
+
+--     COUNT(j.id)
+
+-- FROM game_console AS gc
+
+--     INNER JOIN console AS c ON gc.console_id = c.id
+
+--     INNER JOIN jeu AS j ON gc.jeu_id = j.id
+
+-- where c.id = gc.console_id
+
+-- GROUP BY c.id;
+
+-- SELECT
+
+--     ra.id,
+
+--     ra.label,
+
+--     ra.image_path,
+
+--     COUNT(j.id)
+
+-- FROM restriction_age AS ra
+
+--     INNER JOIN jeu AS j ON ra.id = j.age_id
+
+-- GROUP BY ra.id;
+
+-- SELECT
+
+--     j.titre,
+
+--     j.description,
+
+--     j.prix,
+
+--     j.date_sortie,
+
+--     j.image_path AS image_jeux,
+
+--     j.id,
+
+--     gc.console_id
+
+-- FROM game_console AS gc
+
+--     INNER JOIN jeu AS j ON j.id = gc.jeu_id
+
+--     INNER JOIN console AS c ON c.id = gc.console_id
+
+-- WHERE c.id = 1;
+
+-- SELECT
+
+--     j.titre,
+
+--     j.description,
+
+--     j.prix,
+
+--     j.date_sortie,
+
+--     j.image_path AS image_jeux,
+
+--     j.id,
+
+--     ra.id,
+
+--     ra.label
+
+-- FROM jeu AS j
+
+--     INNER JOIN restriction_age AS ra ON j.age_id = ra.id
+
+-- WHERE ra.id = 1;

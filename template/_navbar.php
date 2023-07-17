@@ -1,3 +1,24 @@
+<div class="en-tete">
+    <img class="logo" src="/images/logo.png" alt="logo">
+    <div class="user-info">
+        <i class="avatar bi bi-person-circle"></i>
+        <?php
+        if (!empty($_SESSION['username'])) {
+            echo $_SESSION['username'];
+        }
+        ?>
+        <?php
+        if (isset($_SESSION['email'])) {
+            echo "<a href='./requete/logout.php'>Se déconnecté</a>";
+        } else {
+            echo "<a href='./login.php'>Se connecté</a>";
+        }
+        ?>
+
+    </div>
+</div>
+
+
 <ul class="nav nav-tabs ml-3">
     <li class="nav-item">
         <a class="nav-link active bg-primary text-white" aria-current="page" href="../index.php">Tout les jeux</a>
@@ -38,6 +59,9 @@
             get_game_by_age()
             ?>
         </ul>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link active bg-primary text-white" aria-current="page" href="../page_insert_game.php">Ajouter un jeux</a>
     </li>
 
 </ul>

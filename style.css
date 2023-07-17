@@ -25,12 +25,18 @@ body {
 }
 
 .logo {
-    width: 202px;
+    width: 313px;
     margin: 20px;
 }
 
+.en-tete {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .nav {
-    margin-left: 114px;
+    margin-left: 67px;
 }
 
 .picture {
@@ -47,17 +53,19 @@ body {
 .card-body {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+
     padding: 0px;
 }
 
-.btn {
+/* .btn {
     width: 126px;
     height: 43px;
-}
+} */
 
 .card-body>* {
-    margin: 5%;
+    margin: 2%;
+    margin-left: 2%;
+    margin-top: 1%;
 }
 
 .pegi {
@@ -72,17 +80,32 @@ body {
 
 
 
-.card-detail h5 {
+.card-title {
     margin: 2%;
+    width: 200px;
+    height: 50px;
 }
 
-.card-detail p {
+.card-text {
     margin: 2%;
+    width: 200px;
+    height: 30px;
+    display: block;
+
+}
+
+.card-text p {
+    margin: 2%;
+    width: 200px;
+    display: block;
+    height: 30px;
+
 }
 
 .img {
     margin: 2%;
     display: flex;
+    width: 77%;
 }
 
 .avis {
@@ -99,7 +122,7 @@ body {
 
 .btn:hover {
     background-color: white;
-    color: rgb(43, 110, 210);
+    color: #0275d8;
 
 }
 
@@ -109,5 +132,75 @@ body {
 
 .small-pegi {
     width: 16%;
+
+}
+
+.console {
+    text-decoration: inherit;
+    color: white;
+    background: #0275d8;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 83%;
+    margin-right: 5px;
+}
+
+.div-console {
+    margin-top: 0;
     margin-left: 2%;
+}
+
+.div-info {
+    margin-left: 2%;
+}
+
+.synopsis {
+    font-weight: bold;
+}
+
+.img-pegi {
+    width: 100%;
+    object-fit: contain;
+}
+
+.pegi {
+    width: 11%;
+    border: 1px solid rgba(128, 128, 128, 0.359);
+    padding: 7px;
+    border-radius: 12%;
+}
+
+.detail-description {
+    display: flex;
+}
+
+.p-pegi {
+    display: flex;
+    align-content: stretch;
+    align-items: center;
+}
+
+.form {
+    margin: 15%;
+    border: 1px solid rgba(128, 128, 128, 0.649);
+    padding: 6%;
+    border-radius: 19px;
+}
+
+.user-info {
+    border: 1px solid rgba(128, 128, 128, 0.649);
+    padding: 7px 19px;
+    margin: 20px 19px;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.avatar {
+    font-size: 35px;
+}
+
+.nav li {
+    margin-left: 5px;
 }

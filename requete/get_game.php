@@ -19,10 +19,27 @@ function get_all_games()
                 aucun jeux trouvé
             </div>
 
-        <?php
+            <?php
         }
     }
 };
+
+function get_username($user)
+{
+    global $connection;
+
+    $query = "SELECT user.username
+    FROM user ";
+    if ($result = mysqli_query($connection, $query)) {
+        if (mysqli_num_rows($result) > 0) {
+            while ($user = mysqli_fetch_assoc($result)) {
+            ?>
+                <span><?php echo $user['username'] ?></span>
+            <?php
+            }
+        }
+    }
+}
 
 function get_game_detail($game_id)
 {
@@ -298,7 +315,7 @@ function get_all_game_asc()
                 aucun jeux trouvé
             </div>
 
-<?php
+            <?php
         }
     }
 }
@@ -395,6 +412,55 @@ function get_all_game_by_age($age_id)
 
                     render_game($game);
                 }
+            }
+        }
+    }
+}
+
+function get_age_form()
+{
+    global $connection;
+
+    $query = "SELECT * FROM restriction_age ";
+
+
+    //on execute la requete
+    if ($result = mysqli_query($connection, $query)) {
+        if (mysqli_num_rows($result) > 0) {
+            //on parcour le resultat
+            while ($age = mysqli_fetch_assoc($result)) {
+                //on appele la fonction de rendu html
+            ?>
+                <option value="<?php echo $age['id'] ?> "><?php echo $age['label'] ?> + </option>
+            <?php
+                //lorsque l'on echo la variable dans whild on donne des parametre dynamique
+                //il sont directement récupere dans la base de données a chauqe fois qua la boucle s'effectue
+
+            }
+        }
+    }
+}
+
+function get_console_form()
+{
+    global $connection;
+
+    $query = "SELECT * FROM console ";
+
+
+    //on execute la requete
+    if ($result = mysqli_query($connection, $query)) {
+        if (mysqli_num_rows($result) > 0) {
+            //on parcour le resultat
+            while ($console = mysqli_fetch_assoc($result)) {
+                //on appele la fonction de rendu html
+            ?>
+                <input type="checkbox" name="console[]" class="btn-check" id="btncheck<?php echo $console['id'] ?>" value="<?php echo $console['id'] ?>" autocomplete="off">
+                <label class="btn btn-outline-primary " for="btncheck<?php echo $console['id'] ?>"><?php echo $console['label'] ?></label>
+<?php
+                //lorsque l'on echo la variable dans whild on donne des parametre dynamique
+                //il sont directement récupere dans la base de données a chauqe fois qua la boucle s'effectue
+
             }
         }
     }
